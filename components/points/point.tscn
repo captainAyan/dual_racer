@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crm0o3lyqph0s"]
+
+[ext_resource type="Script" path="res://components/points/point.gd" id="1_amegu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3i4rk"]
+radius = 16.0
+
+[node name="Point" type="Node2D"]
+script = ExtResource("1_amegu")
+
+[node name="Area2D" type="Area2D" parent="." groups=["points"]]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3i4rk")
+metadata/_edit_lock_ = true

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://fuuw3lr7ixkq"]
+
+[ext_resource type="Script" path="res://components/blocks/block.gd" id="1_6khdm"]
+[ext_resource type="Texture2D" uid="uid://bl3e5vvti4qo1" path="res://assets/red_block.png" id="2_i4l71"]
+
+[node name="RedBlock" type="Node2D"]
+script = ExtResource("1_6khdm")
+
+[node name="RedBlockSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i4l71")
+metadata/_edit_lock_ = true

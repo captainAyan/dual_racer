@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://csvi2dtuotwm8"]
+
+[ext_resource type="Script" path="res://components/points/point.gd" id="1_0rsgk"]
+[ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/red_point.png" id="1_b6wiu"]
+
+[node name="RedPoint" type="Node2D"]
+script = ExtResource("1_0rsgk")
+
+[node name="RedPointSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b6wiu")
+metadata/_edit_lock_ = true

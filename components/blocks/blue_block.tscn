@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt2pt6i103o22"]
+
+[ext_resource type="Script" path="res://components/blocks/block.gd" id="1_wyerv"]
+[ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/blue_block.png" id="2_gexos"]
+
+[node name="BlueBlock" type="Node2D"]
+script = ExtResource("1_wyerv")
+
+[node name="BlueBlockSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gexos")
+metadata/_edit_lock_ = true

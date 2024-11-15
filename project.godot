@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="twocars"
+run/main_scene="res://scenes/test_scene/test_scene.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+window/handheld/orientation=1
+
+[global_group]
+
+blocks=""
+points=""
+
+[input]
+
+move_red_car={
+"deadzone": 0.5,
+"events": []
+}
+move_blue_car={
+"deadzone": 0.5,
+"events": []
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="point"
+2d_physics/layer_2="block"
