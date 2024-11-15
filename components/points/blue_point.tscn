@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn4tlmbd53xgw"]
+[gd_scene load_steps=4 format=3 uid="uid://bbqblky6hu2ec"]
 
 [ext_resource type="Script" path="res://components/points/point.gd" id="1_oj5io"]
 [ext_resource type="Texture2D" uid="uid://x8jfiwutcexc" path="res://assets/blue_point.png" id="2_quw20"]
 
-[node name="BluePoint" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwut0"]
+radius = 16.0
+
+[node name="BluePoint" type="Area2D" groups=["points"]]
+collision_mask = 0
 script = ExtResource("1_oj5io")
 
-[node name="BluePointSprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gwut0")
+metadata/_edit_lock_ = true
+
+[node name="BluePoint" type="Sprite2D" parent="."]
 texture = ExtResource("2_quw20")
 metadata/_edit_lock_ = true

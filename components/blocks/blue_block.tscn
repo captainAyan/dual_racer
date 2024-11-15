@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt2pt6i103o22"]
+[gd_scene load_steps=4 format=3 uid="uid://bqcng6ek5tpmj"]
 
 [ext_resource type="Script" path="res://components/blocks/block.gd" id="1_wyerv"]
 [ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/blue_block.png" id="2_gexos"]
 
-[node name="BlueBlock" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax413"]
+size = Vector2(32, 32)
+
+[node name="BlueBlock" type="Area2D" groups=["blocks"]]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_wyerv")
 
-[node name="BlueBlockSprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ax413")
+metadata/_edit_lock_ = true
+
+[node name="BlueBlock" type="Sprite2D" parent="."]
 texture = ExtResource("2_gexos")
 metadata/_edit_lock_ = true

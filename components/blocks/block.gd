@@ -1,6 +1,6 @@
 class_name Block
 
-extends Node2D
+extends Area2D
 
 @export var direction:Vector2 = Vector2.DOWN;
 @export var speed:int = 100;

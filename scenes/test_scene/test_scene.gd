@@ -1,12 +1,14 @@
 extends Node2D
 
-const RedPoint:PackedScene = preload("res://components/points/red_point.tscn")
-const RedBlock:PackedScene = preload("res://components/blocks/red_block.tscn")
-const BluePoint:PackedScene = preload("res://components/points/blue_point.tscn")
-const BlueBlock:PackedScene = preload("res://components/blocks/blue_block.tscn")
+const RedPoint:PackedScene = preload("res://components/points/red_point.tscn");
+const RedBlock:PackedScene = preload("res://components/blocks/red_block.tscn");
+const BluePoint:PackedScene = preload("res://components/points/blue_point.tscn");
+const BlueBlock:PackedScene = preload("res://components/blocks/blue_block.tscn");
 
-@export var speed:int = 250
-@export var wait_timer_range:Vector2 = Vector2(1, 3)
+@export var speed:int = 250;
+@export var wait_timer_range:Vector2 = Vector2(1, 3);
+
+var score_count:int = 0;
 
 func _ready() -> void:
 	spawn_for_blue()
@@ -53,3 +55,24 @@ func _on_red_lane_timer_timeout() -> void:
 
 func _on_blue_lane_timer_timeout() -> void:
 	spawn_for_blue()
+
+
+# for both the cars
+func _on_car_scored() -> void:
+	score_count += 1
+	$CanvasLayer/ScoreLabel.text = str(score_count)
+
+
+# for both the cars
+func _on_car_blocked() -> void:
+	print("game over - block")
+
+
+# game over if missed a point
+func _on_missed_point_area_2d_area_entered(area: Area2D) -> void:
+	print("game over - miss")
+
+
+# queue_free the blocks that were successfully missed
+func _on_block_queue_free_area_2d_area_entered(area: Area2D) -> void:
+	area.queue_free()

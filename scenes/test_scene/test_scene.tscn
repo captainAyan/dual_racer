@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7s7qqkrcxpko"]
+[gd_scene load_steps=6 format=3 uid="uid://b7s7qqkrcxpko"]
 
 [ext_resource type="Script" path="res://scenes/test_scene/test_scene.gd" id="1_n8q8c"]
 [ext_resource type="PackedScene" uid="uid://bre4k8tywssby" path="res://components/cars/red_car.tscn" id="4_r1775"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfvki"]
 size = Vector2(128, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgtk3"]
+size = Vector2(320, 16)
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_n8q8c")
@@ -72,16 +75,60 @@ metadata/_edit_lock_ = true
 position = Vector2(280, -32)
 metadata/_edit_lock_ = true
 
+[node name="RedCar" parent="." instance=ExtResource("4_r1775")]
+action_name = "move_red_car"
+metadata/_edit_lock_ = true
+
+[node name="BlueCar" parent="." instance=ExtResource("5_h22cf")]
+action_name = "move_blue_car"
+metadata/_edit_lock_ = true
+
+[node name="MissedPointArea2D" type="Area2D" parent="."]
+position = Vector2(160, 656)
+collision_layer = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissedPointArea2D"]
+shape = SubResource("RectangleShape2D_hgtk3")
+metadata/_edit_lock_ = true
+
+[node name="BlockQueueFreeArea2D" type="Area2D" parent="."]
+position = Vector2(160, 776)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockQueueFreeArea2D"]
+shape = SubResource("RectangleShape2D_hgtk3")
+metadata/_edit_lock_ = true
+
 [node name="RedLaneTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="BlueLaneTimer" type="Timer" parent="."]
 
-[node name="RedCar" parent="." instance=ExtResource("4_r1775")]
-action_name = "move_red_car"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BlueCar" parent="." instance=ExtResource("5_h22cf")]
-action_name = "move_blue_car"
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 216.0
+offset_right = -8.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 44
+text = "0"
+horizontal_alignment = 2
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 360)
+zoom = Vector2(0.5, 0.5)
+
+[connection signal="blocked" from="RedCar" to="." method="_on_car_blocked"]
+[connection signal="scored" from="RedCar" to="." method="_on_car_scored"]
+[connection signal="blocked" from="BlueCar" to="." method="_on_car_blocked"]
+[connection signal="scored" from="BlueCar" to="." method="_on_car_scored"]
+[connection signal="area_entered" from="MissedPointArea2D" to="." method="_on_missed_point_area_2d_area_entered"]
+[connection signal="area_entered" from="BlockQueueFreeArea2D" to="." method="_on_block_queue_free_area_2d_area_entered"]
 [connection signal="timeout" from="RedLaneTimer" to="." method="_on_red_lane_timer_timeout"]
 [connection signal="timeout" from="BlueLaneTimer" to="." method="_on_blue_lane_timer_timeout"]
