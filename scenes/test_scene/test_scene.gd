@@ -78,6 +78,9 @@ func _on_car_blocked() -> void:
 func _on_missed_point_area_2d_area_entered(area: Area2D) -> void:
 	print("game over - miss")
 	game_over_handler()
+	
+	if area.has_method("play_pulse"):
+		area.play_pulse()
 
 
 # queue_free the blocks that were successfully missed

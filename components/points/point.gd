@@ -11,3 +11,7 @@ extends Area2D
 func _process(delta: float) -> void:
 	if not is_paused:
 		self.position += direction.normalized() * speed * delta
+
+
+func play_pulse() -> void:
+	$AnimationPlayer.play("pulse")

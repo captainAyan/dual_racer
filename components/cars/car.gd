@@ -39,3 +39,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		area.queue_free()
 	elif area.is_in_group("blocks"):
 		blocked.emit()
+		if area.has_method("play_pulse"):
+			area.play_pulse()
