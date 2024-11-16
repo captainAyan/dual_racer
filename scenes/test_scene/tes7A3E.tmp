@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7s7qqkrcxpko"]
+[gd_scene load_steps=6 format=3 uid="uid://b7s7qqkrcxpko"]
 
 [ext_resource type="Script" path="res://scenes/test_scene/test_scene.gd" id="1_n8q8c"]
-[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/custom_font.ttf" id="4_7tvtg"]
 [ext_resource type="PackedScene" uid="uid://bre4k8tywssby" path="res://components/cars/red_car.tscn" id="4_r1775"]
-[ext_resource type="PackedScene" uid="uid://d01gq5bg5bqaq" path="res://components/ui/game_over/game_over.tscn" id="4_rqgcd"]
 [ext_resource type="PackedScene" uid="uid://vv1dy26rd86y" path="res://components/cars/blue_car.tscn" id="5_h22cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfvki"]
@@ -12,14 +10,8 @@ size = Vector2(128, 560)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgtk3"]
 size = Vector2(320, 16)
 
-[sub_resource type="FontVariation" id="FontVariation_6bws4"]
-base_font = ExtResource("4_7tvtg")
-variation_embolden = 0.5
-
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_n8q8c")
-speed = 300
-wait_timer_range = Vector2(1, 1.5)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -67,23 +59,19 @@ shape = SubResource("RectangleShape2D_qfvki")
 action = "move_blue_car"
 metadata/_edit_lock_ = true
 
-[node name="SpawnMarkers" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="RedLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
+[node name="RedLaneSpawnMarker2D" type="Marker2D" parent="."]
 position = Vector2(40, -32)
 metadata/_edit_lock_ = true
 
-[node name="RedLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
+[node name="RedLaneSpawnMarker2D2" type="Marker2D" parent="."]
 position = Vector2(120, -32)
 metadata/_edit_lock_ = true
 
-[node name="BlueLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
+[node name="BlueLaneSpawnMarker2D" type="Marker2D" parent="."]
 position = Vector2(200, -32)
 metadata/_edit_lock_ = true
 
-[node name="BlueLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
+[node name="BlueLaneSpawnMarker2D2" type="Marker2D" parent="."]
 position = Vector2(280, -32)
 metadata/_edit_lock_ = true
 
@@ -128,20 +116,12 @@ offset_left = 216.0
 offset_right = -8.0
 offset_bottom = 64.0
 grow_horizontal = 2
-theme_override_fonts/font = SubResource("FontVariation_6bws4")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 44
 text = "0"
 horizontal_alignment = 2
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_rqgcd")]
-visible = false
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 360)
-metadata/_edit_lock_ = true
 
 [connection signal="blocked" from="RedCar" to="." method="_on_car_blocked"]
 [connection signal="scored" from="RedCar" to="." method="_on_car_scored"]
@@ -151,4 +131,3 @@ metadata/_edit_lock_ = true
 [connection signal="area_entered" from="BlockQueueFreeArea2D" to="." method="_on_block_queue_free_area_2d_area_entered"]
 [connection signal="timeout" from="RedLaneTimer" to="." method="_on_red_lane_timer_timeout"]
 [connection signal="timeout" from="BlueLaneTimer" to="." method="_on_blue_lane_timer_timeout"]
-[connection signal="restarted" from="CanvasLayer/GameOver" to="." method="_on_game_over_restarted"]

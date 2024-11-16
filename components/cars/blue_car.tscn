@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://vv1dy26rd86y"]
+[gd_scene load_steps=8 format=3 uid="uid://vv1dy26rd86y"]
 
 [ext_resource type="Script" path="res://components/cars/car.gd" id="1_1iirs"]
+[ext_resource type="Texture2D" uid="uid://bqi3uqgkc1cmc" path="res://assets/blue_car.png" id="2_7wwsw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4gwi"]
-size = Vector2(32, 64)
+size = Vector2(32, 48)
 
 [sub_resource type="Animation" id="Animation_l16xw"]
 length = 0.001
@@ -101,14 +102,8 @@ _data = {
 position = Vector2(280, 608)
 script = ExtResource("1_1iirs")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
-offset_bottom = 32.0
-pivot_offset = Vector2(16, 32)
-color = Color(0.254902, 0.411765, 0.882353, 1)
-metadata/_edit_lock_ = true
+[node name="BlueCar" type="Sprite2D" parent="."]
+texture = ExtResource("2_7wwsw")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

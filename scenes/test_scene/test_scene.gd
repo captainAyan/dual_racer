@@ -8,23 +8,29 @@ const BlueBlock:PackedScene = preload("res://components/blocks/blue_block.tscn")
 @export var speed:int = 250;
 @export var wait_timer_range:Vector2 = Vector2(1, 3);
 
+var is_game_over:bool = false;
 var score_count:int = 0;
+var high_score:int = 100;
 
 func _ready() -> void:
 	spawn_for_blue()
 	spawn_for_red()
+	
+	$CanvasLayer/GameOver.hide()
 
 
 func spawn_for_red():
-	spawn_point_or_block($RedLaneSpawnMarker2D, $RedLaneSpawnMarker2D2, RedPoint, 
-		RedBlock)
-	start_timer_with_random_wait_time($RedLaneTimer)
+	if not is_game_over:
+		spawn_point_or_block($SpawnMarkers/RedLaneSpawnMarker2D, $SpawnMarkers/RedLaneSpawnMarker2D2, 
+			RedPoint, RedBlock)
+		start_timer_with_random_wait_time($RedLaneTimer)
 
 
 func spawn_for_blue():
-	spawn_point_or_block($BlueLaneSpawnMarker2D, $BlueLaneSpawnMarker2D2, BluePoint, 
-		BlueBlock)
-	start_timer_with_random_wait_time($BlueLaneTimer)
+	if not is_game_over:
+		spawn_point_or_block($SpawnMarkers/BlueLaneSpawnMarker2D, $SpawnMarkers/BlueLaneSpawnMarker2D2, 
+			BluePoint, BlueBlock)
+		start_timer_with_random_wait_time($BlueLaneTimer)
 
 
 func start_timer_with_random_wait_time(timer: Timer) -> void:
@@ -59,20 +65,65 @@ func _on_blue_lane_timer_timeout() -> void:
 
 # for both the cars
 func _on_car_scored() -> void:
-	score_count += 1
-	$CanvasLayer/ScoreLabel.text = str(score_count)
+	update_score(score_count + 1)
 
 
 # for both the cars
 func _on_car_blocked() -> void:
 	print("game over - block")
+	game_over_handler()
 
 
 # game over if missed a point
 func _on_missed_point_area_2d_area_entered(area: Area2D) -> void:
 	print("game over - miss")
+	game_over_handler()
 
 
 # queue_free the blocks that were successfully missed
 func _on_block_queue_free_area_2d_area_entered(area: Area2D) -> void:
 	area.queue_free()
+
+
+func game_over_handler() -> void:
+	if not is_game_over: 
+		is_game_over = true
+	else: return
+	
+	# pause everything
+	$RedCar.is_paused = true
+	$BlueCar.is_paused = true
+	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.is_paused = true)
+	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.is_paused = true)
+	
+	$CanvasLayer/GameOver.show()
+	$CanvasLayer/GameOver.set_score_values(score_count, high_score)
+
+
+func reset() -> void:
+	if is_game_over: 
+		is_game_over = false
+	else: return
+	
+	update_score(0)
+	
+	# resume everything
+	$RedCar.is_paused = false
+	$BlueCar.is_paused = false
+	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.queue_free())
+	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.queue_free())
+	
+	# restart spawning
+	spawn_for_blue()
+	spawn_for_red()
+	
+	$CanvasLayer/GameOver.hide()
+
+
+func _on_game_over_restarted() -> void:
+	reset()
+
+
+func update_score(new_score:int) -> void:
+	score_count = new_score
+	$CanvasLayer/ScoreLabel.text = str(score_count)

@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=3 uid="uid://d01gq5bg5bqaq"]
+
+[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/custom_font.ttf" id="1_48awc"]
+[ext_resource type="Script" path="res://components/ui/game_over/game_over.gd" id="1_pmcax"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/game_over/font_style.tres" id="2_d46t0"]
+[ext_resource type="Texture2D" uid="uid://c4yj8stmt8k4r" path="res://assets/restart_button.png" id="2_o00en"]
+[ext_resource type="Texture2D" uid="uid://b2mocto7dmetq" path="res://assets/restart_button_pressed.png" id="3_w7w8k"]
+[ext_resource type="Texture2D" uid="uid://bh5yrdb46nali" path="res://assets/home_button.png" id="5_rx2kn"]
+[ext_resource type="Texture2D" uid="uid://dcih1xrbraoa0" path="res://assets/home_button_pressed.png" id="6_sjtj7"]
+[ext_resource type="Texture2D" uid="uid://bfomeunsrp71h" path="res://assets/high_score_button.png" id="7_q3hbk"]
+[ext_resource type="Texture2D" uid="uid://du25ejdmia6xu" path="res://assets/high_score_button_pressed.png" id="8_leg1x"]
+
+[sub_resource type="FontVariation" id="FontVariation_cskkl"]
+base_font = ExtResource("1_48awc")
+variation_embolden = 0.25
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pmcax")
+metadata/_edit_horizontal_guides_ = [360.0]
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.752941)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_bottom = -96.0
+metadata/_edit_lock_ = true
+
+[node name="GameOverLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.232
+offset_bottom = -7.36
+theme_override_fonts/font = SubResource("FontVariation_cskkl")
+theme_override_font_sizes/font_size = 76
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ScoreLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_top = 0.217
+anchor_right = 1.0
+anchor_bottom = 0.3
+offset_left = 88.0
+offset_top = -0.160004
+offset_right = -176.0
+theme_override_fonts/font = ExtResource("2_d46t0")
+theme_override_font_sizes/font_size = 32
+text = "Score"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ScoreValueLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_top = 0.217
+anchor_right = 1.0
+anchor_bottom = 0.3
+offset_left = 160.0
+offset_top = -0.160004
+offset_right = -96.0
+theme_override_fonts/font = ExtResource("2_d46t0")
+theme_override_font_sizes/font_size = 32
+text = "0
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HighScoreLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.383
+offset_left = 88.0
+offset_right = -176.0
+offset_bottom = 0.159988
+theme_override_fonts/font = ExtResource("2_d46t0")
+theme_override_font_sizes/font_size = 32
+text = "Best"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HighScoreValueLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.383
+offset_left = 160.0
+offset_right = -96.0
+offset_bottom = 0.159988
+theme_override_fonts/font = ExtResource("2_d46t0")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="RestartTouchScreenButton" type="TouchScreenButton" parent="Container"]
+position = Vector2(112, 224)
+texture_normal = ExtResource("2_o00en")
+texture_pressed = ExtResource("3_w7w8k")
+metadata/_edit_lock_ = true
+
+[node name="HomeTouchScreenButton" type="TouchScreenButton" parent="Container"]
+position = Vector2(88, 336)
+texture_normal = ExtResource("5_rx2kn")
+texture_pressed = ExtResource("6_sjtj7")
+metadata/_edit_lock_ = true
+
+[node name="HighScoreTouchScreenButton" type="TouchScreenButton" parent="Container"]
+position = Vector2(168, 336)
+texture_normal = ExtResource("7_q3hbk")
+texture_pressed = ExtResource("8_leg1x")
+metadata/_edit_lock_ = true
+
+[connection signal="released" from="Container/RestartTouchScreenButton" to="." method="_on_restart_touch_screen_button_released"]
+[connection signal="released" from="Container/HomeTouchScreenButton" to="." method="_on_home_touch_screen_button_released"]
+[connection signal="released" from="Container/HighScoreTouchScreenButton" to="." method="_on_high_score_touch_screen_button_released"]

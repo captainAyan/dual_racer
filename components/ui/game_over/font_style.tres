@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cs4lytfyex3he"]
+
+[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/custom_font.ttf" id="1_3uu5o"]
+
+[resource]
+base_font = ExtResource("1_3uu5o")
+variation_embolden = 0.75
