@@ -39,6 +39,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 144.0
 offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="GameOverLabel" type="Label" parent="Container"]

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="twocars"
-run/main_scene="res://scenes/test_scene/test_scene.tscn"
+config/name="Dual Racer"
+run/main_scene="res://scenes/menu_scene/menu_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
