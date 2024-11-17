@@ -5,8 +5,8 @@ const RedBlock:PackedScene = preload("res://components/blocks/red_block.tscn");
 const BluePoint:PackedScene = preload("res://components/points/blue_point.tscn");
 const BlueBlock:PackedScene = preload("res://components/blocks/blue_block.tscn");
 
-@export var speed:int = 250;
-@export var wait_timer_range:Vector2 = Vector2(1, 3);
+@export var speed:int = 500;
+@export var wait_time:float = 1;
 
 var is_game_over:bool = false;
 var score_count:int = 0;
@@ -34,7 +34,8 @@ func spawn_for_blue():
 
 
 func start_timer_with_random_wait_time(timer: Timer) -> void:
-	timer.wait_time = randi_range(wait_timer_range.x, wait_timer_range.y)
+	#timer.wait_time = randi_range(wait_timer_range.x, wait_timer_range.y)
+	timer.wait_time = wait_time
 	timer.start()
 
 
@@ -94,13 +95,16 @@ func game_over_handler() -> void:
 	else: return
 	
 	# pause everything
-	$RedCar.is_paused = true
-	$BlueCar.is_paused = true
+	%RedCar.is_paused = true
+	%BlueCar.is_paused = true
 	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.is_paused = true)
 	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.is_paused = true)
 	
+	ScoreManager.update_high_score(score_count)
+	ScoreManager.save_scores()
+	
+	$CanvasLayer/GameOver.set_score_values(score_count, ScoreManager.high_scores[0])
 	$CanvasLayer/GameOver.show()
-	$CanvasLayer/GameOver.set_score_values(score_count, high_score)
 
 
 func reset() -> void:
@@ -111,8 +115,8 @@ func reset() -> void:
 	update_score(0)
 	
 	# resume everything
-	$RedCar.is_paused = false
-	$BlueCar.is_paused = false
+	%RedCar.is_paused = false
+	%BlueCar.is_paused = false
 	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.queue_free())
 	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.queue_free())
 	
@@ -134,3 +138,7 @@ func _on_game_over_restarted() -> void:
 
 func _on_game_over_moved_to_home() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu_scene/menu_scene.tscn")
+
+
+func _on_game_over_moved_to_high_score() -> void:
+	get_tree().change_scene_to_file("res://scenes/high_score_score/high_score_scene.tscn")

@@ -1,10 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbqblky6hu2ec"]
 
 [ext_resource type="Script" path="res://components/points/point.gd" id="1_oj5io"]
-[ext_resource type="Texture2D" uid="uid://x8jfiwutcexc" path="res://assets/blue_point.png" id="2_quw20"]
+[ext_resource type="Texture2D" uid="uid://x8jfiwutcexc" path="res://assets/images/blue_point.png" id="2_quw20"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwut0"]
-radius = 16.0
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_2a0rq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BluePoint:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_xm5ly"]
 resource_name = "pulse"
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2a0rq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BluePoint:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bxsd"]

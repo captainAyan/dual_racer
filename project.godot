@@ -12,13 +12,18 @@ config_version=5
 
 config/name="Dual Racer"
 run/main_scene="res://scenes/menu_scene/menu_scene.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScoreManager="*res://global/score_manager.gd"
+
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=720
+window/size/viewport_width=640
+window/size/viewport_height=1440
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/handheld/orientation=1
@@ -47,3 +52,7 @@ pointing/emulate_touch_from_mouse=true
 
 2d_physics/layer_1="point"
 2d_physics/layer_2="block"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

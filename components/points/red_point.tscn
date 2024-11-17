@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cix4rrs2f05nb"]
 
 [ext_resource type="Script" path="res://components/points/point.gd" id="1_0rsgk"]
-[ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/red_point.png" id="1_b6wiu"]
+[ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/images/red_point.png" id="1_b6wiu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b3rme"]
-radius = 16.0
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_evvq4"]
 length = 0.001

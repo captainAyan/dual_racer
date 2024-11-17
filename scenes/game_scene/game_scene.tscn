@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://b7s7qqkrcxpko"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/game_scene.gd" id="1_n8q8c"]
-[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/custom_font.ttf" id="4_7tvtg"]
+[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="4_7tvtg"]
 [ext_resource type="PackedScene" uid="uid://bre4k8tywssby" path="res://components/cars/red_car.tscn" id="4_r1775"]
 [ext_resource type="PackedScene" uid="uid://d01gq5bg5bqaq" path="res://components/ui/game_over/game_over.tscn" id="4_rqgcd"]
-[ext_resource type="PackedScene" uid="uid://vv1dy26rd86y" path="res://components/cars/blue_car.tscn" id="5_h22cf"]
+[ext_resource type="PackedScene" uid="uid://7gi2q8523xcv" path="res://components/cars/blue_car.tscn" id="5_h22cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfvki"]
-size = Vector2(128, 560)
+size = Vector2(256, 1216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgtk3"]
-size = Vector2(320, 16)
+size = Vector2(640, 16)
 
 [sub_resource type="FontVariation" id="FontVariation_6bws4"]
 base_font = ExtResource("4_7tvtg")
@@ -18,51 +18,49 @@ variation_embolden = 0.5
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_n8q8c")
-speed = 300
-wait_timer_range = Vector2(1, 1.5)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-offset_right = 320.0
-offset_bottom = 720.0
+offset_right = 640.0
+offset_bottom = 1440.0
 color = Color(0.258824, 0.329412, 0.643137, 1)
 metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="Background"]
-points = PackedVector2Array(160, 0, 160, 720)
-width = 4.0
+position = Vector2(160, 0)
+points = PackedVector2Array(160, 0, 160, 1440)
+width = 8.0
 default_color = Color(0.64784, 0.712929, 0.853315, 1)
 metadata/_edit_lock_ = true
 
 [node name="Line2D2" type="Line2D" parent="Background"]
-position = Vector2(-80, 0)
-points = PackedVector2Array(160, 0, 160, 720)
-width = 2.0
+points = PackedVector2Array(160, 0, 160, 1440)
+width = 4.0
 default_color = Color(0.64784, 0.712929, 0.853315, 1)
 metadata/_edit_lock_ = true
 
 [node name="Line2D3" type="Line2D" parent="Background"]
-position = Vector2(80, 0)
-points = PackedVector2Array(160, 0, 160, 720)
-width = 2.0
+position = Vector2(320, 0)
+points = PackedVector2Array(160, 0, 160, 1440)
+width = 4.0
 default_color = Color(0.64784, 0.712929, 0.853315, 1)
 metadata/_edit_lock_ = true
 
 [node name="MovementButtons" type="Node2D" parent="."]
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="RedCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
-position = Vector2(80, 368)
+position = Vector2(160, 768)
 shape = SubResource("RectangleShape2D_qfvki")
 action = "move_red_car"
 metadata/_edit_lock_ = true
 
 [node name="BlueCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
-position = Vector2(240, 368)
+position = Vector2(480, 768)
 shape = SubResource("RectangleShape2D_qfvki")
 action = "move_blue_car"
 metadata/_edit_lock_ = true
@@ -72,31 +70,43 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="RedLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
-position = Vector2(40, -32)
+position = Vector2(80, -64)
 metadata/_edit_lock_ = true
 
 [node name="RedLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
-position = Vector2(120, -32)
+position = Vector2(240, -64)
 metadata/_edit_lock_ = true
 
 [node name="BlueLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
-position = Vector2(200, -32)
+position = Vector2(400, -64)
 metadata/_edit_lock_ = true
 
 [node name="BlueLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
-position = Vector2(280, -32)
+position = Vector2(560, -64)
 metadata/_edit_lock_ = true
 
-[node name="RedCar" parent="." instance=ExtResource("4_r1775")]
+[node name="Cars" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="RedCarContainer" type="Node2D" parent="Cars"]
+position = Vector2(160, 1216)
+metadata/_edit_lock_ = true
+
+[node name="RedCar" parent="Cars/RedCarContainer" instance=ExtResource("4_r1775")]
+unique_name_in_owner = true
 action_name = "move_red_car"
+
+[node name="BlueCarContainer" type="Node2D" parent="Cars"]
+position = Vector2(480, 1216)
 metadata/_edit_lock_ = true
 
-[node name="BlueCar" parent="." instance=ExtResource("5_h22cf")]
+[node name="BlueCar" parent="Cars/BlueCarContainer" instance=ExtResource("5_h22cf")]
+unique_name_in_owner = true
 action_name = "move_blue_car"
-metadata/_edit_lock_ = true
 
 [node name="MissedPointArea2D" type="Area2D" parent="."]
-position = Vector2(160, 656)
+position = Vector2(320, 1280)
 collision_layer = 0
 metadata/_edit_lock_ = true
 
@@ -105,7 +115,7 @@ shape = SubResource("RectangleShape2D_hgtk3")
 metadata/_edit_lock_ = true
 
 [node name="BlockQueueFreeArea2D" type="Area2D" parent="."]
-position = Vector2(160, 776)
+position = Vector2(320, 1600)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_lock_ = true
@@ -124,12 +134,12 @@ one_shot = true
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 216.0
-offset_right = -8.0
-offset_bottom = 64.0
+offset_left = 320.0
+offset_right = -16.0
+offset_bottom = 128.0
 grow_horizontal = 2
 theme_override_fonts/font = SubResource("FontVariation_6bws4")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 104
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -137,19 +147,17 @@ metadata/_edit_lock_ = true
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("4_rqgcd")]
 visible = false
+metadata/_edit_horizontal_guides_ = [360.0]
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(160, 360)
-metadata/_edit_lock_ = true
-
-[connection signal="blocked" from="RedCar" to="." method="_on_car_blocked"]
-[connection signal="scored" from="RedCar" to="." method="_on_car_scored"]
-[connection signal="blocked" from="BlueCar" to="." method="_on_car_blocked"]
-[connection signal="scored" from="BlueCar" to="." method="_on_car_scored"]
+[connection signal="blocked" from="Cars/RedCarContainer/RedCar" to="." method="_on_car_blocked"]
+[connection signal="scored" from="Cars/RedCarContainer/RedCar" to="." method="_on_car_scored"]
+[connection signal="blocked" from="Cars/BlueCarContainer/BlueCar" to="." method="_on_car_blocked"]
+[connection signal="scored" from="Cars/BlueCarContainer/BlueCar" to="." method="_on_car_scored"]
 [connection signal="area_entered" from="MissedPointArea2D" to="." method="_on_missed_point_area_2d_area_entered"]
 [connection signal="area_entered" from="BlockQueueFreeArea2D" to="." method="_on_block_queue_free_area_2d_area_entered"]
 [connection signal="timeout" from="RedLaneTimer" to="." method="_on_red_lane_timer_timeout"]
 [connection signal="timeout" from="BlueLaneTimer" to="." method="_on_blue_lane_timer_timeout"]
+[connection signal="moved_to_high_score" from="CanvasLayer/GameOver" to="." method="_on_game_over_moved_to_high_score"]
 [connection signal="moved_to_home" from="CanvasLayer/GameOver" to="." method="_on_game_over_moved_to_home"]
 [connection signal="restarted" from="CanvasLayer/GameOver" to="." method="_on_game_over_restarted"]
