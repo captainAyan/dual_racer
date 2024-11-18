@@ -12,8 +12,14 @@ config_version=5
 
 config/name="Dual Racer"
 run/main_scene="res://scenes/menu_scene/menu_scene.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="dual_racer"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.384314, 0.0392157, 0.576471, 1)
+boot_splash/image="res://assets/images/splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
