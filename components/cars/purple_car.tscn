@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://7gi2q8523xcv"]
 
 [ext_resource type="Script" path="res://components/cars/car.gd" id="1_1iirs"]
-[ext_resource type="Texture2D" uid="uid://bqi3uqgkc1cmc" path="res://assets/images/purple_car.png" id="2_7wwsw"]
+[ext_resource type="Texture2D" uid="uid://bqi3uqgkc1cmc" path="res://assets/images/purple_boat.png" id="2_7wwsw"]
 [ext_resource type="Texture2D" uid="uid://b5bp7b2iixjxj" path="res://assets/images/smoke_particle.png" id="3_qi5if"]
 
 [sub_resource type="Curve" id="Curve_3n0rb"]

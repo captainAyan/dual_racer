@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://components/cars/car.gd" id="1_jet1c"]
 [ext_resource type="Texture2D" uid="uid://b5bp7b2iixjxj" path="res://assets/images/smoke_particle.png" id="2_0kurw"]
-[ext_resource type="Texture2D" uid="uid://dsou2hd5gpl1f" path="res://assets/images/pink_car.png" id="2_xbx1b"]
+[ext_resource type="Texture2D" uid="uid://dsou2hd5gpl1f" path="res://assets/images/pink_boat.png" id="2_xbx1b"]
 
 [sub_resource type="Curve" id="Curve_6qd7j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0987654, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

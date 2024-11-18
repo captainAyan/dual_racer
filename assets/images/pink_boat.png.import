@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqi3uqgkc1cmc"
-path="res://.godot/imported/purple_car.png-803192b3573102e9c355962b1672ed22.ctex"
+uid="uid://dsou2hd5gpl1f"
+path="res://.godot/imported/pink_boat.png-4f607c95e6972cf78f9650aaf53d939f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/purple_car.png"
-dest_files=["res://.godot/imported/purple_car.png-803192b3573102e9c355962b1672ed22.ctex"]
+source_file="res://assets/images/pink_boat.png"
+dest_files=["res://.godot/imported/pink_boat.png-4f607c95e6972cf78f9650aaf53d939f.ctex"]
 
 [params]
 
