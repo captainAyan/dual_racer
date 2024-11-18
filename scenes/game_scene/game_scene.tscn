@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/game_scene/game_scene.gd" id="1_n8q8c"]
 [ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="4_7tvtg"]
-[ext_resource type="PackedScene" uid="uid://bre4k8tywssby" path="res://components/cars/red_car.tscn" id="4_r1775"]
+[ext_resource type="PackedScene" uid="uid://bre4k8tywssby" path="res://components/cars/pink_car.tscn" id="4_r1775"]
 [ext_resource type="PackedScene" uid="uid://d01gq5bg5bqaq" path="res://components/ui/game_over/game_over.tscn" id="4_rqgcd"]
-[ext_resource type="PackedScene" uid="uid://7gi2q8523xcv" path="res://components/cars/blue_car.tscn" id="5_h22cf"]
+[ext_resource type="PackedScene" uid="uid://7gi2q8523xcv" path="res://components/cars/purple_car.tscn" id="5_h22cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfvki"]
 size = Vector2(256, 1216)
@@ -53,57 +53,57 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="RedCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
+[node name="PinkCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
 position = Vector2(160, 768)
 shape = SubResource("RectangleShape2D_qfvki")
-action = "move_red_car"
+action = "move_pink_car"
 metadata/_edit_lock_ = true
 
-[node name="BlueCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
+[node name="PurpleCarMovementTouchScreenButton" type="TouchScreenButton" parent="MovementButtons"]
 position = Vector2(480, 768)
 shape = SubResource("RectangleShape2D_qfvki")
-action = "move_blue_car"
+action = "move_purple_car"
 metadata/_edit_lock_ = true
 
 [node name="SpawnMarkers" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="RedLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
+[node name="PinkLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
 position = Vector2(80, -64)
 metadata/_edit_lock_ = true
 
-[node name="RedLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
+[node name="PinkLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
 position = Vector2(240, -64)
 metadata/_edit_lock_ = true
 
-[node name="BlueLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
+[node name="PurpleLaneSpawnMarker2D" type="Marker2D" parent="SpawnMarkers"]
 position = Vector2(400, -64)
 metadata/_edit_lock_ = true
 
-[node name="BlueLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
+[node name="PurpleLaneSpawnMarker2D2" type="Marker2D" parent="SpawnMarkers"]
 position = Vector2(560, -64)
 metadata/_edit_lock_ = true
 
-[node name="Cars" type="Node2D" parent="."]
+[node name="Boats" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="RedCarContainer" type="Node2D" parent="Cars"]
+[node name="PinkBoatContainer" type="Node2D" parent="Boats"]
 position = Vector2(160, 1216)
 metadata/_edit_lock_ = true
 
-[node name="RedCar" parent="Cars/RedCarContainer" instance=ExtResource("4_r1775")]
+[node name="PinkBoat" parent="Boats/PinkBoatContainer" instance=ExtResource("4_r1775")]
 unique_name_in_owner = true
-action_name = "move_red_car"
+action_name = "move_pink_car"
 
-[node name="BlueCarContainer" type="Node2D" parent="Cars"]
+[node name="PurpleBoatContainer" type="Node2D" parent="Boats"]
 position = Vector2(480, 1216)
 metadata/_edit_lock_ = true
 
-[node name="BlueCar" parent="Cars/BlueCarContainer" instance=ExtResource("5_h22cf")]
+[node name="PurpleBoat" parent="Boats/PurpleBoatContainer" instance=ExtResource("5_h22cf")]
 unique_name_in_owner = true
-action_name = "move_blue_car"
+action_name = "move_purple_car"
 
 [node name="MissedPointArea2D" type="Area2D" parent="."]
 position = Vector2(320, 1280)
@@ -124,10 +124,10 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_hgtk3")
 metadata/_edit_lock_ = true
 
-[node name="RedLaneTimer" type="Timer" parent="."]
+[node name="PinkLaneTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="BlueLaneTimer" type="Timer" parent="."]
+[node name="PurpleLaneTimer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -150,14 +150,14 @@ visible = false
 metadata/_edit_horizontal_guides_ = [360.0]
 metadata/_edit_lock_ = true
 
-[connection signal="blocked" from="Cars/RedCarContainer/RedCar" to="." method="_on_car_blocked"]
-[connection signal="scored" from="Cars/RedCarContainer/RedCar" to="." method="_on_car_scored"]
-[connection signal="blocked" from="Cars/BlueCarContainer/BlueCar" to="." method="_on_car_blocked"]
-[connection signal="scored" from="Cars/BlueCarContainer/BlueCar" to="." method="_on_car_scored"]
+[connection signal="blocked" from="Boats/PinkBoatContainer/PinkBoat" to="." method="_on_boat_blocked"]
+[connection signal="scored" from="Boats/PinkBoatContainer/PinkBoat" to="." method="_on_boat_scored"]
+[connection signal="blocked" from="Boats/PurpleBoatContainer/PurpleBoat" to="." method="_on_boat_blocked"]
+[connection signal="scored" from="Boats/PurpleBoatContainer/PurpleBoat" to="." method="_on_boat_scored"]
 [connection signal="area_entered" from="MissedPointArea2D" to="." method="_on_missed_point_area_2d_area_entered"]
 [connection signal="area_entered" from="BlockQueueFreeArea2D" to="." method="_on_block_queue_free_area_2d_area_entered"]
-[connection signal="timeout" from="RedLaneTimer" to="." method="_on_red_lane_timer_timeout"]
-[connection signal="timeout" from="BlueLaneTimer" to="." method="_on_blue_lane_timer_timeout"]
+[connection signal="timeout" from="PinkLaneTimer" to="." method="_on_pink_lane_timer_timeout"]
+[connection signal="timeout" from="PurpleLaneTimer" to="." method="_on_purple_lane_timer_timeout"]
 [connection signal="moved_to_high_score" from="CanvasLayer/GameOver" to="." method="_on_game_over_moved_to_high_score"]
 [connection signal="moved_to_home" from="CanvasLayer/GameOver" to="." method="_on_game_over_moved_to_home"]
 [connection signal="restarted" from="CanvasLayer/GameOver" to="." method="_on_game_over_restarted"]

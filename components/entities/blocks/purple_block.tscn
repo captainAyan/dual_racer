@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqcng6ek5tpmj"]
+
+[ext_resource type="Script" path="res://components/entities/blocks/block.gd" id="1_wyerv"]
+[ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/images/purple_block.png" id="2_gexos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax413"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_nww0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PurpleBlockSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m241f"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PurpleBlockSprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnf0j"]
+_data = {
+"RESET": SubResource("Animation_nww0g"),
+"pulse": SubResource("Animation_m241f")
+}
+
+[node name="PurpleBlock" type="Area2D" groups=["blocks"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_wyerv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ax413")
+metadata/_edit_lock_ = true
+
+[node name="PurpleBlockSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gexos")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pnf0j")
+}

@@ -1,9 +1,9 @@
 extends Node2D
 
-const RedPoint:PackedScene = preload("res://components/points/red_point.tscn");
-const RedBlock:PackedScene = preload("res://components/blocks/red_block.tscn");
-const BluePoint:PackedScene = preload("res://components/points/blue_point.tscn");
-const BlueBlock:PackedScene = preload("res://components/blocks/blue_block.tscn");
+const PinkPoint:PackedScene = preload("res://components/entities/points/pink_point.tscn");
+const PinkBlock:PackedScene = preload("res://components/entities/blocks/pink_block.tscn");
+const PurplePoint:PackedScene = preload("res://components/entities/points/purple_point.tscn");
+const PurpleBlock:PackedScene = preload("res://components/entities/blocks/purple_block.tscn");
 
 @export var speed:int = 500;
 @export var wait_time:float = 1;
@@ -13,24 +13,24 @@ var score_count:int = 0;
 var high_score:int = 100;
 
 func _ready() -> void:
-	spawn_for_blue()
-	spawn_for_red()
+	spawn_for_purple()
+	spawn_for_pink()
 	
 	$CanvasLayer/GameOver.hide()
 
 
-func spawn_for_red():
+func spawn_for_pink():
 	if not is_game_over:
-		spawn_point_or_block($SpawnMarkers/RedLaneSpawnMarker2D, $SpawnMarkers/RedLaneSpawnMarker2D2, 
-			RedPoint, RedBlock)
-		start_timer_with_random_wait_time($RedLaneTimer)
+		spawn_point_or_block($SpawnMarkers/PinkLaneSpawnMarker2D, $SpawnMarkers/PinkLaneSpawnMarker2D2, 
+			PinkPoint, PinkBlock)
+		start_timer_with_random_wait_time($PinkLaneTimer)
 
 
-func spawn_for_blue():
+func spawn_for_purple():
 	if not is_game_over:
-		spawn_point_or_block($SpawnMarkers/BlueLaneSpawnMarker2D, $SpawnMarkers/BlueLaneSpawnMarker2D2, 
-			BluePoint, BlueBlock)
-		start_timer_with_random_wait_time($BlueLaneTimer)
+		spawn_point_or_block($SpawnMarkers/PurpleLaneSpawnMarker2D, $SpawnMarkers/PurpleLaneSpawnMarker2D2, 
+			PurplePoint, PurpleBlock)
+		start_timer_with_random_wait_time($PurpleLaneTimer)
 
 
 func start_timer_with_random_wait_time(timer: Timer) -> void:
@@ -56,21 +56,21 @@ func spawn_point_or_block(marker1:Marker2D, marker2:Marker2D, point:PackedScene,
 	add_child(point_or_block_instance)
 
 
-func _on_red_lane_timer_timeout() -> void:
-	spawn_for_red()
+func _on_pink_lane_timer_timeout() -> void:
+	spawn_for_pink()
 
 
-func _on_blue_lane_timer_timeout() -> void:
-	spawn_for_blue()
+func _on_purple_lane_timer_timeout() -> void:
+	spawn_for_purple()
 
 
-# for both the cars
-func _on_car_scored() -> void:
+# for both the boats
+func _on_boat_scored() -> void:
 	update_score(score_count + 1)
 
 
-# for both the cars
-func _on_car_blocked() -> void:
+# for both the boats
+func _on_boat_blocked() -> void:
 	print("game over - block")
 	game_over_handler()
 
@@ -95,8 +95,8 @@ func game_over_handler() -> void:
 	else: return
 	
 	# pause everything
-	%RedCar.is_paused = true
-	%BlueCar.is_paused = true
+	%PinkBoat.is_paused = true
+	%PurpleBoat.is_paused = true
 	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.is_paused = true)
 	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.is_paused = true)
 	
@@ -115,14 +115,14 @@ func reset() -> void:
 	update_score(0)
 	
 	# resume everything
-	%RedCar.is_paused = false
-	%BlueCar.is_paused = false
+	%PinkBoat.is_paused = false
+	%PurpleBoat.is_paused = false
 	get_tree().get_nodes_in_group("points").map(func (x) -> void: x.queue_free())
 	get_tree().get_nodes_in_group("blocks").map(func (x) -> void: x.queue_free())
 	
 	# restart spawning
-	spawn_for_blue()
-	spawn_for_red()
+	spawn_for_purple()
+	spawn_for_pink()
 	
 	$CanvasLayer/GameOver.hide()
 

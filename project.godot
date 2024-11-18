@@ -35,11 +35,11 @@ points=""
 
 [input]
 
-move_red_car={
+move_pink_car={
 "deadzone": 0.5,
 "events": []
 }
-move_blue_car={
+move_purple_car={
 "deadzone": 0.5,
 "events": []
 }

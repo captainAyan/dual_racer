@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://cix4rrs2f05nb"]
+
+[ext_resource type="Script" path="res://components/entities/points/point.gd" id="1_i7gej"]
+[ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/images/pink_point.png" id="2_wi2mp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3rme"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_evvq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkPointSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dw216"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkPointSprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_unemq"]
+_data = {
+"RESET": SubResource("Animation_evvq4"),
+"pulse": SubResource("Animation_dw216")
+}
+
+[node name="PinkPoint" type="Area2D" groups=["points"]]
+collision_mask = 0
+script = ExtResource("1_i7gej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b3rme")
+metadata/_edit_lock_ = true
+
+[node name="PinkPointSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wi2mp")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_unemq")
+}
