@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="1_48awc"]
 [ext_resource type="Script" path="res://components/ui/game_over/game_over.gd" id="1_pmcax"]
-[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/game_over/font_style.tres" id="2_d46t0"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/font_style.tres" id="2_d46t0"]
 [ext_resource type="Texture2D" uid="uid://c4yj8stmt8k4r" path="res://assets/images/restart_button.png" id="2_o00en"]
 [ext_resource type="Texture2D" uid="uid://b2mocto7dmetq" path="res://assets/images/restart_button_pressed.png" id="3_w7w8k"]
 [ext_resource type="Texture2D" uid="uid://bh5yrdb46nali" path="res://assets/images/home_button.png" id="5_rx2kn"]

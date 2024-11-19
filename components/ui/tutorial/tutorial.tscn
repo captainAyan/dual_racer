@@ -1,0 +1,288 @@
+[gd_scene load_steps=15 format=3 uid="uid://sun5q5jqfypk"]
+
+[ext_resource type="Texture2D" uid="uid://bl3e5vvti4qo1" path="res://assets/images/pink_block.png" id="1_0mq02"]
+[ext_resource type="Script" path="res://components/ui/tutorial/tutorial.gd" id="1_wiudf"]
+[ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/images/purple_block.png" id="2_6rtn3"]
+[ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/images/pink_point.png" id="3_egk7n"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/font_style.tres" id="3_xe6e6"]
+[ext_resource type="Texture2D" uid="uid://x8jfiwutcexc" path="res://assets/images/purple_point.png" id="4_k63pw"]
+[ext_resource type="Texture2D" uid="uid://dsou2hd5gpl1f" path="res://assets/images/pink_boat.png" id="6_nmndy"]
+
+[sub_resource type="Animation" id="Animation_jj2nt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoatLaneSwitchDemo/PinkBoat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoatLaneSwitchDemo/PinkBoat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoatLaneSwitchDemo/TapIndicatorLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mi64s"]
+resource_name = "boat_lane_switch_demo"
+length = 4.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoatLaneSwitchDemo/PinkBoat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.3, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(160, 136), Vector2(48, 136), Vector2(48, 136), Vector2(160, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoatLaneSwitchDemo/PinkBoat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.15, 1.3, 3, 3.15, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.0, 0.0, 0.523599, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoatLaneSwitchDemo/TapIndicatorLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.3, 2.8, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mdex"]
+_data = {
+"RESET": SubResource("Animation_jj2nt"),
+"boat_lane_switch_demo": SubResource("Animation_mi64s")
+}
+
+[sub_resource type="Animation" id="Animation_8x472"]
+resource_name = "pulse"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fx2jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lq3sf"]
+_data = {
+"RESET": SubResource("Animation_fx2jc"),
+"pulse": SubResource("Animation_8x472")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph8is"]
+size = Vector2(512, 1280)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wiudf")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 1440.0
+color = Color(0, 0, 0, 0.752941)
+metadata/_edit_lock_ = true
+
+[node name="Points" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PinkPoint" type="Sprite2D" parent="Points"]
+position = Vector2(208, 416)
+texture = ExtResource("3_egk7n")
+metadata/_edit_lock_ = true
+
+[node name="PurplePoint" type="Sprite2D" parent="Points"]
+position = Vector2(128, 416)
+texture = ExtResource("4_k63pw")
+metadata/_edit_lock_ = true
+
+[node name="PointsLabel" type="Label" parent="Points"]
+offset_left = 288.0
+offset_top = 384.0
+offset_right = 544.0
+offset_bottom = 447.0
+theme_override_fonts/font = ExtResource("3_xe6e6")
+theme_override_font_sizes/font_size = 52
+text = "COLLECT THESE"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Blocks" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PinkBlock" type="Sprite2D" parent="Blocks"]
+position = Vector2(128, 512)
+texture = ExtResource("1_0mq02")
+metadata/_edit_lock_ = true
+
+[node name="PurpleBlock" type="Sprite2D" parent="Blocks"]
+position = Vector2(208, 512)
+texture = ExtResource("2_6rtn3")
+metadata/_edit_lock_ = true
+
+[node name="BlocksLabel" type="Label" parent="Blocks"]
+offset_left = 288.0
+offset_top = 480.0
+offset_right = 544.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("3_xe6e6")
+theme_override_font_sizes/font_size = 52
+text = "AVOID THESE"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="BoatLaneSwitchDemo" type="Node2D" parent="."]
+position = Vector2(96, 640)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BoatLaneSwitchDemo"]
+offset_right = 208.0
+offset_bottom = 192.0
+color = Color(0.384314, 0.0392157, 0.576471, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="BoatLaneSwitchDemo"]
+points = PackedVector2Array(104, 0, 104, 192)
+default_color = Color(0.8, 0.439216, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="PinkBoat" type="Sprite2D" parent="BoatLaneSwitchDemo"]
+position = Vector2(160, 136)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("6_nmndy")
+metadata/_edit_lock_ = true
+
+[node name="TapIndicatorLabel" type="Label" parent="BoatLaneSwitchDemo"]
+offset_left = 40.0
+offset_top = 208.0
+offset_right = 168.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("3_xe6e6")
+theme_override_font_sizes/font_size = 32
+text = "- TAP -"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="BoatLaneSwitchDemoLabel" type="Label" parent="BoatLaneSwitchDemo"]
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("3_xe6e6")
+theme_override_font_sizes/font_size = 32
+text = "TAP TO SWITCH LANE"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoatLaneSwitchDemo"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6mdex")
+}
+autoplay = "boat_lane_switch_demo"
+
+[node name="Start" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="StartLabel" type="Label" parent="Start"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 1088.0
+offset_right = 640.0
+offset_bottom = 1152.0
+theme_override_fonts/font = ExtResource("3_xe6e6")
+theme_override_font_sizes/font_size = 52
+text = "TAP ANYWHERE TO START"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]
+libraries = {
+"": SubResource("AnimationLibrary_lq3sf")
+}
+autoplay = "pulse"
+
+[node name="StartButton" type="TouchScreenButton" parent="."]
+position = Vector2(320, 720)
+shape = SubResource("RectangleShape2D_ph8is")
+metadata/_edit_lock_ = true
+
+[connection signal="released" from="StartButton" to="." method="_on_start_button_released"]

@@ -13,10 +13,15 @@ var score_count:int = 0;
 var high_score:int = 100;
 
 func _ready() -> void:
+	$CanvasLayer/Tutorial.show()
+	$CanvasLayer/GameOver.hide()
+
+
+func _on_tutorial_start() -> void:
+	print("started")
+	$CanvasLayer/Tutorial.hide()
 	spawn_for_purple()
 	spawn_for_pink()
-	
-	$CanvasLayer/GameOver.hide()
 
 
 func spawn_for_pink():
