@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/images/purple_block.png" id="2_gexos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax413"]
-size = Vector2(64, 64)
+size = Vector2(64, 16)
 
 [sub_resource type="Animation" id="Animation_nww0g"]
 length = 0.001
@@ -49,6 +49,7 @@ collision_mask = 0
 script = ExtResource("1_wyerv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_ax413")
 metadata/_edit_lock_ = true
 
