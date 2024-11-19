@@ -1,18 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://d01gq5bg5bqaq"]
+[gd_scene load_steps=10 format=3 uid="uid://d01gq5bg5bqaq"]
 
-[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="1_48awc"]
 [ext_resource type="Script" path="res://components/ui/game_over/game_over.gd" id="1_pmcax"]
-[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/font_style.tres" id="2_d46t0"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://assets/fonts/ui_font_theme.tres" id="2_d46t0"]
 [ext_resource type="Texture2D" uid="uid://c4yj8stmt8k4r" path="res://assets/images/restart_button.png" id="2_o00en"]
+[ext_resource type="FontVariation" uid="uid://bm4df1low3sbs" path="res://assets/fonts/header_font_theme.tres" id="2_olpxd"]
 [ext_resource type="Texture2D" uid="uid://b2mocto7dmetq" path="res://assets/images/restart_button_pressed.png" id="3_w7w8k"]
 [ext_resource type="Texture2D" uid="uid://bh5yrdb46nali" path="res://assets/images/home_button.png" id="5_rx2kn"]
 [ext_resource type="Texture2D" uid="uid://dcih1xrbraoa0" path="res://assets/images/home_button_pressed.png" id="6_sjtj7"]
 [ext_resource type="Texture2D" uid="uid://bfomeunsrp71h" path="res://assets/images/high_score_button.png" id="7_q3hbk"]
 [ext_resource type="Texture2D" uid="uid://du25ejdmia6xu" path="res://assets/images/high_score_button_pressed.png" id="8_leg1x"]
-
-[sub_resource type="FontVariation" id="FontVariation_cskkl"]
-base_font = ExtResource("1_48awc")
-variation_embolden = 0.25
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -53,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 0.34
 offset_top = 0.399994
 offset_bottom = -0.959991
-theme_override_fonts/font = SubResource("FontVariation_cskkl")
+theme_override_fonts/font = ExtResource("2_olpxd")
 theme_override_font_sizes/font_size = 152
 text = "GAME OVER"
 horizontal_alignment = 1

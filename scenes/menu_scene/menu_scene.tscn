@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cco8nwb1sj5u7"]
+[gd_scene load_steps=8 format=3 uid="uid://cco8nwb1sj5u7"]
 
 [ext_resource type="Script" path="res://scenes/menu_scene/menu_scene.gd" id="1_mfupo"]
-[ext_resource type="FontVariation" uid="uid://4qdfbn717wig" path="res://scenes/menu_scene/new_font_variation.tres" id="2_iuh3h"]
 [ext_resource type="Texture2D" uid="uid://i66p38rq7vc8" path="res://assets/images/backdrop.png" id="2_m3o6g"]
+[ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="3_bhjfg"]
 [ext_resource type="Texture2D" uid="uid://baemeieganiec" path="res://assets/images/main_menu_button.png" id="3_tlk8x"]
 [ext_resource type="Texture2D" uid="uid://bih2grghxr50y" path="res://assets/images/main_menu_button_pressed.png" id="4_ppnda"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://assets/fonts/ui_font_theme.tres" id="6_2v0it"]
+
+[sub_resource type="FontVariation" id="FontVariation_ag6ai"]
+base_font = ExtResource("3_bhjfg")
+variation_embolden = 0.5
 
 [node name="MenuScene" type="Node2D"]
 script = ExtResource("1_mfupo")
@@ -34,7 +39,7 @@ metadata/_edit_lock_ = true
 offset_top = 128.0
 offset_right = 640.0
 offset_bottom = 608.0
-theme_override_fonts/font = ExtResource("2_iuh3h")
+theme_override_fonts/font = SubResource("FontVariation_ag6ai")
 theme_override_font_sizes/font_size = 192
 text = "DUAL
 RACER"
@@ -46,7 +51,7 @@ metadata/_edit_lock_ = true
 offset_top = 592.0
 offset_right = 640.0
 offset_bottom = 656.0
-theme_override_fonts/font = ExtResource("2_iuh3h")
+theme_override_fonts/font = ExtResource("6_2v0it")
 theme_override_font_sizes/font_size = 48
 text = "By CaptainAyan"
 horizontal_alignment = 1
@@ -64,7 +69,7 @@ metadata/_edit_lock_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("2_iuh3h")
+theme_override_fonts/font = ExtResource("6_2v0it")
 theme_override_font_sizes/font_size = 96
 text = "START"
 horizontal_alignment = 1
@@ -83,7 +88,7 @@ metadata/_edit_lock_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("2_iuh3h")
+theme_override_fonts/font = ExtResource("6_2v0it")
 theme_override_font_sizes/font_size = 96
 text = "HIGHSCORE"
 horizontal_alignment = 1
@@ -102,7 +107,7 @@ metadata/_edit_lock_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource("2_iuh3h")
+theme_override_fonts/font = ExtResource("6_2v0it")
 theme_override_font_sizes/font_size = 96
 text = "QUIT"
 horizontal_alignment = 1

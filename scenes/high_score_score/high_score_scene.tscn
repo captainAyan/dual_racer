@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scenes/high_score_score/high_score_scene.gd" id="1_57qul"]
 [ext_resource type="FontFile" uid="uid://bwfc7ghlkd2x2" path="res://assets/fonts/custom_font.ttf" id="2_7jmad"]
 [ext_resource type="Texture2D" uid="uid://i66p38rq7vc8" path="res://assets/images/backdrop.png" id="2_vpk80"]
-[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/game_over/font_style.tres" id="3_nuhd0"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://assets/fonts/ui_font_theme.tres" id="3_nuhd0"]
 [ext_resource type="Texture2D" uid="uid://bh5yrdb46nali" path="res://assets/images/home_button.png" id="4_6mss8"]
 [ext_resource type="Texture2D" uid="uid://dcih1xrbraoa0" path="res://assets/images/home_button_pressed.png" id="5_xqfvx"]
 
-[sub_resource type="FontVariation" id="FontVariation_yqoum"]
+[sub_resource type="FontVariation" id="FontVariation_gnn6l"]
 base_font = ExtResource("2_7jmad")
 variation_embolden = 0.25
 
@@ -48,7 +48,7 @@ anchors_preset = -1
 offset_top = 272.0
 offset_right = 640.0
 offset_bottom = 544.0
-theme_override_fonts/font = SubResource("FontVariation_yqoum")
+theme_override_fonts/font = SubResource("FontVariation_gnn6l")
 theme_override_font_sizes/font_size = 152
 text = "HIGH SCORE"
 horizontal_alignment = 1

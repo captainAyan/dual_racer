@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://components/ui/tutorial/tutorial.gd" id="1_wiudf"]
 [ext_resource type="Texture2D" uid="uid://d26wu47ot0pda" path="res://assets/images/purple_block.png" id="2_6rtn3"]
 [ext_resource type="Texture2D" uid="uid://cy6ft43t1280n" path="res://assets/images/pink_point.png" id="3_egk7n"]
-[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://components/ui/font_style.tres" id="3_xe6e6"]
+[ext_resource type="FontVariation" uid="uid://cs4lytfyex3he" path="res://assets/fonts/ui_font_theme.tres" id="3_xe6e6"]
 [ext_resource type="Texture2D" uid="uid://x8jfiwutcexc" path="res://assets/images/purple_point.png" id="4_k63pw"]
 [ext_resource type="Texture2D" uid="uid://dsou2hd5gpl1f" path="res://assets/images/pink_boat.png" id="6_nmndy"]
 
@@ -95,6 +95,21 @@ _data = {
 "boat_lane_switch_demo": SubResource("Animation_mi64s")
 }
 
+[sub_resource type="Animation" id="Animation_fx2jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_8x472"]
 resource_name = "pulse"
 loop_mode = 2
@@ -109,21 +124,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_fx2jc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StartLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lq3sf"]
